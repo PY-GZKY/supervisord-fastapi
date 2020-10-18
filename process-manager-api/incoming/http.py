@@ -1,5 +1,7 @@
 from fastapi import FastAPI
-import services
+from application import services
+import uvicorn
+import managers
 
 
 def controllers(app: FastAPI):
@@ -23,8 +25,8 @@ def controllers(app: FastAPI):
 
     @app.get('/restart')
     def restart_process(process_id: str) -> None:
-        process_id
-        manager_process_service.restart_process(process_id)
+        process = managers.ProcessModel(process_id)
+        manager_process_service.restart_process(process)
 
     @app.get('/enable')
     def enable_process(process_id: str):
@@ -38,3 +40,8 @@ def controllers(app: FastAPI):
 def run():
     app = FastAPI()
     controllers(app)
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=5000
+    )
