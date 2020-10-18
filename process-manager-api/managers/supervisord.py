@@ -1,9 +1,12 @@
-from http.client import HTTPConnection
 import socket
-from xmlrpc import client
 import subprocess
+from http.client import HTTPConnection
 from pathlib import Path
 from typing import List
+from xmlrpc import client
+
+import managers
+from managers import ProcessModel
 
 
 class UnixStreamHTTPConnection(HTTPConnection):
@@ -12,7 +15,7 @@ class UnixStreamHTTPConnection(HTTPConnection):
         self.sock.connect(self.host)
 
 
-class UnixStreamTransport(client.Transport, object):
+class UnixStreamTransport(client.Transport):
     def __init__(self, socket_path):
         self.socket_path = socket_path
         super(UnixStreamTransport, self).__init__()
@@ -21,18 +24,25 @@ class UnixStreamTransport(client.Transport, object):
         return UnixStreamHTTPConnection(self.socket_path)
 
 
-class Supervisor:
-    def __init__(self, address='http://localhost', socket_path='/var/run/supervisor/supervisor.sock'):
+class Supervisord(managers.ProcessManagerProtocol):
+    def __init__(
+            self,
+            address='http://localhost',
+            socket_path='/var/run/supervisor/supervisor.sock'
+    ):
         self.address = address
         self.socket_path = socket_path
-        self.server = client.ServerProxy(self.address, transport=UnixStreamTransport(self.socket_path))
+        self.server = client.ServerProxy(
+            self.address,
+            transport=UnixStreamTransport(self.socket_path)
+        )
 
     def _list_methods(self):
         return self.server.system.listMethods()
 
-    def update(self):
+    def reload_daemon(self):
         try:
-            subprocess.call(['supervisorctl', 'update'])
+            subprocess.call(['supervisorctl', 'reload_daemon'])
         except subprocess.CalledProcessError as ignored:
             pass
 
@@ -61,7 +71,7 @@ class Supervisor:
         path = Path(abspath_supervisor)
         return list(path.glob('*.ini')) + list(path.glob('*.conf')) + list(path.glob('*.off'))
 
-    def enable_unit(self, unit):
+    def enable(self, unit):
         _unit_file = list(filter(lambda v: v.name == unit, self.__get_unit_files()))
 
         if len(_unit_file) <= 0:
@@ -73,7 +83,7 @@ class Supervisor:
             else:
                 raise RuntimeWarning('unit "{}" already enable'.format(unit))
 
-    def disable_unit(self, unit):
+    def disable(self, unit):
         _unit_file = list(filter(lambda v: v.name == unit, self.__get_unit_files()))
 
         if len(_unit_file) <= 0:
@@ -84,6 +94,9 @@ class Supervisor:
                 unit_file.rename(unit_file.name + '.off')
             else:
                 raise RuntimeWarning('unit "{}" already disable'.format(unit))
+
+    def view_logs(self, process: ProcessModel):
+        pass
 
     @property
     def units(self):

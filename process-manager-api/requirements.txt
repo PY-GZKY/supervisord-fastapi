@@ -1,0 +1,6 @@
+fastapi
+loguru
+python-multipart
+python-dotenv
+python-jose[cryptography]
+uvicorn
