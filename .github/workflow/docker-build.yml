@@ -9,4 +9,4 @@ jobs:
   build-latest:
     runs-on: ubuntu-latest
     steps:
-      - run: curl ${{ DOCKER_HUB.WEBHOOK_BUILD_LATEST }}
+      - run: curl ${{ dockerhub.WEBHOOK_BUILD_LATEST }}
