@@ -1,4 +1,5 @@
-![Docker Automated build](https://img.shields.io/docker/automated/augustoliks/supervisord-fastapi)
+[![](https://github.com/augustoliks/supervisord-fastapi/actions/workflows/docker-build.yml/badge.svg)](https://github.com/augustoliks/supervisord-fastapi/actions/workflows/docker-build.yml)
+[![augustoliks/supervisord-fastapi](https://img.shields.io/badge/dockerfile-augustoliks/supervisord--fastapi:latest-blue.svg)](https://hub.docker.com/r/augustoliks/supervisord-fastapi)
 
 # supervisord-fastapi
 
