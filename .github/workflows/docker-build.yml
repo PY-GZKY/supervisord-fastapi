@@ -9,4 +9,6 @@ jobs:
   build-latest:
     runs-on: ubuntu-latest
     steps:
-      - run: curl ${{ secrets.WEBHOOK_BUILD_LATEST }}
+      - run: curl $WEBHOOK_BUILD_LATEST
+    env:
+      WEBHOOK_BUILD_LATEST: ${{ secrets.WEBHOOK_BUILD_LATEST }}
