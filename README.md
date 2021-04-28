@@ -78,3 +78,4 @@ Environment Variable                | Description                               
 ---                                 |---                                                    |---
 `SUPERVISORD_ADDRESS_HTTP`          | HTTP Address to access Supervisord instance           | `http://localhost`
 `SUPERVISORD_ADDRESS_UNIX_SOCKET`   | Unix Domain Socket File of Supervisord XML-RPC API    | `/var/run/supervisor/supervisor.sock`
+`TIMEZONE`                          | Host Timezone                                         | `America/Sao_Paulo`
