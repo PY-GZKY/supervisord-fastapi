@@ -1,0 +1,12 @@
+name: Build Dockerfile With Latest Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl ${{ DOCKER_HUB.WEBHOOK_BUILD_LATEST }}
