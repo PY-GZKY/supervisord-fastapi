@@ -1,6 +1,6 @@
 FROM python:3.9-slim-buster
 WORKDIR /app
-ENV TIMEZONE America/Sao_Paulo
+ENV TZ America/Sao_Paulo
 COPY src .
 ADD requirements.txt .
 RUN python3 -m pip install --upgrade pip
