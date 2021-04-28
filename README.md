@@ -5,7 +5,7 @@
 
 *[Supervisord](https://github.com/Supervisor/supervisor) + [FastAPI](https://github.com/tiangolo/fastapi) = supervisord-fastapi* :smile: :rocket:
 
-HTTP API to manage [Supervisord](https://github.com/Supervisor/supervisor) main functions.
+HTTP API to handler [Supervisord](https://github.com/Supervisor/supervisor) main functions.
 
 Features: 
 
