@@ -16,7 +16,7 @@ Features:
 
 Prerequisites: 
 
-Dependencie         | Version
+Dependency          | Version
 ---                 |---
 python              | >= 3.
 pip                 | >= 9.0.1
