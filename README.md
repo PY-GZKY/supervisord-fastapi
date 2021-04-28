@@ -70,7 +70,7 @@ $ uvicorn --port 5000 entrypoint:create_app
 
 The configuration is made through *Environment Variables*. If necessary, override values.
 
-Environment Variable                | Description                                   | Default Value
----                                 |---                                            |---
-`SUPERVISORD_ADDRESS_HTTP`          | HTTP Address to access Supervisord instance   | `http://localhost`
-`SUPERVISORD_ADDRESS_UNIX_SOCKET`   | Unix Socket to Supervisord XML-RPC API        | `/var/run/supervisor/supervisor.sock`
+Environment Variable                | Description                                           | Default Value
+---                                 |---                                                    |---
+`SUPERVISORD_ADDRESS_HTTP`          | HTTP Address to access Supervisord instance           | `http://localhost`
+`SUPERVISORD_ADDRESS_UNIX_SOCKET`   | Unix Domain Socket File of Supervisord XML-RPC API    | `/var/run/supervisor/supervisor.sock`
