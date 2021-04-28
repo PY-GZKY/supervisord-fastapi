@@ -1,12 +1,7 @@
-FROM python:3.7-alpine as base
-
+FROM python:3.9-slim-buster
 WORKDIR /app
-COPY process-manager-api .
-
+COPY src .
+ADD requirements.txt .
+RUN python3 -m pip install --upgrade pip
 RUN pip3 install -r requirements.txt
-RUN apk add tzdata
-
-ENV LOGURU_LEVEL SUCCESS
-EXPOSE 5000
-
-CMD python3 run.py
+CMD uvicorn --host 0.0.0.0 --port 5000 entrypoint:create_app
