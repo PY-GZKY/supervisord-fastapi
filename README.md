@@ -2,7 +2,7 @@
 
 Supervisord + FastAPI = *supervisord-fastapi* :smile: :rocket:
 
-Web-API to manage [Supervisord](https://github.com/Supervisor/supervisor) main functions.
+HTTP API to manage [Supervisord](https://github.com/Supervisor/supervisor) main functions.
 
 Features: 
 
