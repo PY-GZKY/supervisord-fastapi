@@ -1,4 +1,4 @@
-from typing import List
+import typing
 import supervisord
 from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
@@ -13,7 +13,7 @@ def exception_handlers(app: FastAPI):
 def supervisord_routes(app: FastAPI):
     supervisord_daemon = supervisord.Supervisord()
 
-    @app.get("/info/", response_model=List[supervisord.ProcessInfo])
+    @app.get("/info/", response_model=typing.List[supervisord.ProcessInfo])
     async def get_info_all_process():
         """get information of all process"""
         return supervisord_daemon.all_process_info()

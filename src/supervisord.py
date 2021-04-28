@@ -1,10 +1,10 @@
 import os
 import socket
-from http.client import HTTPConnection
-from pathlib import Path
-from typing import List
+import pathlib
+import typing
 from xmlrpc import client
-from datetime import datetime
+from http.client import HTTPConnection
+import datetime
 from pydantic import (
     BaseModel,
     Field
@@ -84,13 +84,13 @@ class ProcessInfo(BaseModel):
             "Example:”Jun 5 03:16 PM ”."
         )
     )
-    start: datetime = Field(
+    start: datetime.datetime = Field(
         description="UNIX timestamp of when the process was started"
     )
-    stop: datetime = Field(
+    stop: datetime.datetime = Field(
         description="UNIX timestamp of when the process last ended, or 0 if the process has never been stopped."
     )
-    now: datetime = Field(
+    now: datetime.datetime = Field(
         description="UNIX timestamp of the current time, which can be used to calculate process up-time."
     )
     state: int = Field(
@@ -99,17 +99,17 @@ class ProcessInfo(BaseModel):
     statename: str = Field(
         description="String description of state, see Process States."
     )
-    logfile: Path = Field(
+    logfile: pathlib.Path = Field(
         description=(
             "Deprecated alias for stdout_logfile. "
             "This is provided only for compatibility with clients written for Supervisor 2.x and may be removed "
             "in the future. Use stdout_logfile instead."
         )
     )
-    stdout_logfile: Path = Field(
+    stdout_logfile: pathlib.Path = Field(
         description="Absolute path and filename to the STDOUT logfile"
     )
-    stderr_logfile: Path = Field(
+    stderr_logfile: pathlib.Path = Field(
         description="Absolute path and filename to the STDOUT logfile"
     )
     spawnerr: str = Field(
@@ -185,7 +185,7 @@ class Supervisord:
 
         return ProcessInfo(**process)
 
-    def all_process_info(self) -> List[ProcessInfo]:
+    def all_process_info(self) -> typing.List[ProcessInfo]:
         process_info = []
 
         for process in self.server.supervisor.getAllProcessInfo():
