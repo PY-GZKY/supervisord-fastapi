@@ -18,7 +18,7 @@ Prerequisites:
 
 Dependency          | Version
 ---                 |---
-python              | >= 3.
+python              | >= 3.5
 pip                 | >= 9.0.1
 supervisor          | >= 4.2.1 
 
