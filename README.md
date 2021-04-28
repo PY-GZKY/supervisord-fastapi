@@ -77,5 +77,3 @@ Environment Variable                | Description                               
 ---                                 |---                                                    |---
 `SUPERVISORD_ADDRESS_HTTP`          | HTTP Address to access Supervisord instance           | `http://localhost`
 `SUPERVISORD_ADDRESS_UNIX_SOCKET`   | Unix Domain Socket File of Supervisord XML-RPC API    | `/var/run/supervisor/supervisor.sock`
-
-# https://hub.docker.com/api/build/v1/source/22909ddf-24b5-4ed4-9ba7-850f2488a4d0/trigger/316c3ad9-3e16-4d62-9658-439316a79a34/call/
