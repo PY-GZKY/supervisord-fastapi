@@ -1,3 +1,5 @@
+![Docker Automated build](https://img.shields.io/docker/automated/augustoliks/supervisord-fastapi)
+
 # supervisord-fastapi
 
 *[Supervisord](https://github.com/Supervisor/supervisor) + [FastAPI](https://github.com/tiangolo/fastapi) = supervisord-fastapi* :smile: :rocket:
