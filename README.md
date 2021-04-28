@@ -14,7 +14,7 @@ Features:
 
 ## Quick Start
 
-### Running with Docker :docker:
+### Running with Docker :whale:
 
 To run `supervisord-fastapi` in container, it's needed declare `VOLUME (-v)` to Unix Domain Socket File of Supervisord XML-RPC API.
 
@@ -22,7 +22,7 @@ To run `supervisord-fastapi` in container, it's needed declare `VOLUME (-v)` to 
 $ docker run -it -p 5000:5000 -v /var/run/supervisor/supervisor.sock:/var/run/supervisor/supervisor.sock augustoliks/supervisord-fastapi
 ```
 
-### Running with CLI 
+### Running with CLI :terminal: 
 
 Prerequisites: 
 
