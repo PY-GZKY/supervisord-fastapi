@@ -1,4 +1,4 @@
-name: Build Dockerfile With Latest Tag
+name: Build Dockerfile
 
 on:
   push:
