@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: env
-      - run: curl ${{ dockerhub.WEBHOOK_BUILD_LATEST }}
+#      - run: curl ${{ dockerhub.WEBHOOK_BUILD_LATEST }}
